@@ -10,7 +10,8 @@
         "Axios",
         "Babel",
         "Gulp"
-      ]
+      ],
+      "type":"Client"
     },
     {
       "id": 2,
@@ -22,7 +23,8 @@
         "HTML",
         "Bootstrap",
         "Grunt"
-      ]
+      ],
+      "type":"Client"
     },
     {
       "id": 3,
@@ -34,7 +36,8 @@
         "HTML",
         "CSS",
         "Jquery"
-      ]
+      ],
+      "type":"Client"
     },
     {
       "id": 4,
@@ -44,7 +47,8 @@
         "HTML",
         "LESS",
         "Jquery"
-      ]
+      ],
+      "type":"Server"
     },
     {
       "id": 5,
@@ -55,7 +59,67 @@
         "CSS",
         "LESS",
         "Bootstrap"
-      ]
+      ],
+      "type":"Server & Client"
+    },
+    {
+      "id": 6,
+      "title": "Responsive Company Website Template",
+      "techs": [
+        "Jade",
+        "HTML",
+        "CSS3",
+        "LESS",
+        "JQuery"
+      ],
+      "type":"Client"
+    },{
+      "id": 7,
+      "title": "Ember Single Page App",
+      "techs": [
+        "Ember",
+        "Ember Router",
+        "HTML",
+        "Bootstrap",
+        "Ember CLI"
+      ],
+      "type":"Client"
+    },{
+      "id": 8,
+      "title": "Knockout Single Page App",
+      "techs": [
+        "Knockout",
+        "Knockout Router",
+        "HTML5",
+        "CSS3",
+        "Bootstrap",
+        "Grunt"
+      ],
+      "type":"Client"
+    },{
+      "id": 9,
+      "title": "Python Single Page App",
+      "techs": [
+        "Python",
+        "Django",
+        "SASS",
+        "HTML",
+        "Bootstrap"
+
+      ],
+      "type":"Server"
+    },
+    {
+      "id": 10,
+      "title": "Java Card Game",
+      "techs": [
+        "Java",
+        "OOP",
+        "JFrame",
+        "ActionListener",
+        "Threads"
+      ],
+      "type":"Server"
     }
   ]
 }

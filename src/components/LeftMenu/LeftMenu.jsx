@@ -1,6 +1,5 @@
 import React from 'react';
 import MenuItem from 'material-ui/MenuItem';
-import Avatar from 'material-ui/Avatar';
 import Drawer from 'material-ui/Drawer';
 import {deepPurple900} from 'material-ui/styles/colors'
 import {List, ListItem} from 'material-ui/List';
@@ -10,26 +9,31 @@ import ActionInfo from 'material-ui/svg-icons/action/info';
 import CommunicationEmail from 'material-ui/svg-icons/communication/email';
 
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
-import ContentDrafts from 'material-ui/svg-icons/content/drafts';
-import ContentSend from 'material-ui/svg-icons/content/send';
 import {grey50} from 'material-ui/styles/colors'
 import {Link} from 'react-router';
 
 class LeftMenu extends React.Component {
 	render() {
 		const leftMenuStyle = {
-			appBar:{
+			appBar: {
 				backgroundColor: deepPurple900,
-				title:{
-					fontWeight:300,
-					link:{
+				title: {
+					fontWeight: 300,
+					link: {
 						color: grey50,
-						textDecoration:'none'
+						textDecoration: 'none'
 					}
 				}
 			},
 			link: {
 				textDecoration: 'none'
+
+			},
+			nestedItemLink: {
+				textDecoration: 'none',
+				nestedItem: {
+					paddingLeft: '50px'
+				}
 			}
 
 		};
@@ -47,35 +51,31 @@ class LeftMenu extends React.Component {
 					titleStyle={leftMenuStyle.appBar.title}
 					showMenuIconButton={false}
 					title={<Link style={leftMenuStyle.appBar.title.link} to="/"> React SPA</Link>}
-							/>
+				/>
 
 				<Link style={leftMenuStyle.link} to="/about"> <MenuItem leftIcon={<ActionInfo />}
 																																onTouchTap={this._handleClose.bind(this)}>About</MenuItem></Link>
-				<Link style={leftMenuStyle.link} to="/resume"> <MenuItem leftIcon={<ContentInbox />}
-																																 onTouchTap={this._handleClose.bind(this)}>Resume </MenuItem></Link>
+				<Link style={leftMenuStyle.link} to="/projects"> <MenuItem leftIcon={<ContentInbox />}
+																																	 onTouchTap={this._handleClose.bind(this)}>Projects </MenuItem></Link>
 				<List>
 					<ListItem
-						primaryText="Projects"
+						primaryText="Nested Link"
 						leftIcon={<ContentInbox />}
 						initiallyOpen={false}
 						primaryTogglesNestedList={true}
-						nestedItems={[
-          <ListItem
-            key={1}
-            primaryText="Project 1"
-            leftIcon={<ActionGrade />}
-          />,
-          <ListItem
-            key={2}
-            primaryText="Project 2"
-            leftIcon={<ActionGrade />}
-          />,
-          <ListItem
-            key={3}
-            primaryText="Project 3"
-            leftIcon={<ActionGrade />}
-          />
-        ]}
+						nestedItems={
+						[
+						<Link key={1} to={{ pathname: '/nested/nested-item', query: { id: 1 } }} style={leftMenuStyle.nestedItemLink}>
+          	<ListItem  style={leftMenuStyle.nestedItemLink.nestedItem} leftIcon={<ActionGrade />}    primaryText="Item 1" />
+          </Link>,
+          <Link key={2} to={{ pathname: '/nested/nested-item', query: { id: 2 } }}  style={leftMenuStyle.nestedItemLink}>
+          	<ListItem  style={leftMenuStyle.nestedItemLink.nestedItem} leftIcon={<ActionGrade />}  key={2}  primaryText="Item 2" />
+          </Link>,
+          <Link key={3} to={{ pathname: '/nested/nested-item', query: { id: 3 } }}  style={leftMenuStyle.nestedItemLink}>
+          	<ListItem  style={leftMenuStyle.nestedItemLink.nestedItem} leftIcon={<ActionGrade />}  key={3}  primaryText="Item 3" />
+          </Link>
+						]
+						}
 					/>
 				</List>
 				<Link style={leftMenuStyle.link} to="contact"> <MenuItem leftIcon={<CommunicationEmail />}
