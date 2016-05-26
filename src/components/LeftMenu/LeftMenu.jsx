@@ -1,25 +1,39 @@
 import React from 'react';
 import MenuItem from 'material-ui/MenuItem';
-import Avatar from 'material-ui/Avatar';
 import Drawer from 'material-ui/Drawer';
 import {deepPurple900} from 'material-ui/styles/colors'
+import {List, ListItem} from 'material-ui/List';
+import AppBar from 'material-ui/AppBar';
+import ActionGrade from 'material-ui/svg-icons/action/grade';
+import ActionInfo from 'material-ui/svg-icons/action/info';
+import CommunicationEmail from 'material-ui/svg-icons/communication/email';
+
+import ContentInbox from 'material-ui/svg-icons/content/inbox';
+import {grey50} from 'material-ui/styles/colors'
 import {Link} from 'react-router';
 
 class LeftMenu extends React.Component {
 	render() {
 		const leftMenuStyle = {
-			textAlign: 'center',
-			avatar: {
-				margin: '5px',
-				boxShadow: '0 4px 8px 2px #01012b'
+			appBar: {
+				backgroundColor: deepPurple900,
+				title: {
+					fontWeight: 300,
+					link: {
+						color: grey50,
+						textDecoration: 'none'
+					}
+				}
 			},
-			name: {
-				margin: '10px 0',
-				color: deepPurple900
+			link: {
+				textDecoration: 'none'
+
 			},
-			title: {
-				color: deepPurple900,
-				fontWeight: 400
+			nestedItemLink: {
+				textDecoration: 'none',
+				nestedItem: {
+					paddingLeft: '50px'
+				}
 			}
 
 		};
@@ -32,24 +46,48 @@ class LeftMenu extends React.Component {
 				onRequestChange={this._handleClose.bind(this)}
 				style={leftMenuStyle}
 			>
-				<Avatar
-					style={leftMenuStyle.avatar}
-					src="./assets/img/starks.jpg"
-					size={120}
+				<AppBar
+					style={leftMenuStyle.appBar}
+					titleStyle={leftMenuStyle.appBar.title}
+					showMenuIconButton={false}
+					title={<Link style={leftMenuStyle.appBar.title.link} to="/"> React SPA</Link>}
 				/>
-				<h2 style={leftMenuStyle.name}>Name Surname</h2>
-				<h3 style={leftMenuStyle.title}>Job Title</h3>
-				<Link to="/about"> <MenuItem onTouchTap={this._handleClose.bind(this)}>About</MenuItem></Link>
-				<Link to="/projects"> <MenuItem onTouchTap={this._handleClose.bind(this)}>Project </MenuItem></Link>
-				<Link to="/resume"> <MenuItem onTouchTap={this._handleClose.bind(this)}>Resume </MenuItem></Link>
-				<Link to="contact"> <MenuItem onTouchTap={this._handleClose.bind(this)}>Contact </MenuItem></Link>
-				<a href="https://medium.com/@ozluy" target="_blank"> <MenuItem onTouchTap={this._handleClose.bind(this)}>Blog </MenuItem></a>
+
+				<Link style={leftMenuStyle.link} to="/about"> <MenuItem leftIcon={<ActionInfo />}
+																																onTouchTap={this._handleClose.bind(this)}>About</MenuItem></Link>
+				<Link style={leftMenuStyle.link} to="/projects"> <MenuItem leftIcon={<ContentInbox />}
+																																	 onTouchTap={this._handleClose.bind(this)}>Projects </MenuItem></Link>
+				<List>
+					<ListItem
+						primaryText="Nested Link"
+						leftIcon={<ContentInbox />}
+						initiallyOpen={false}
+						primaryTogglesNestedList={true}
+						nestedItems={
+						[
+						<Link key={1} to={{ pathname: '/nested/nested-item', query: { id: 1 } }} style={leftMenuStyle.nestedItemLink}>
+          	<ListItem  style={leftMenuStyle.nestedItemLink.nestedItem} leftIcon={<ActionGrade />}    primaryText="Item 1" />
+          </Link>,
+          <Link key={2} to={{ pathname: '/nested/nested-item', query: { id: 2 } }}  style={leftMenuStyle.nestedItemLink}>
+          	<ListItem  style={leftMenuStyle.nestedItemLink.nestedItem} leftIcon={<ActionGrade />}  key={2}  primaryText="Item 2" />
+          </Link>,
+          <Link key={3} to={{ pathname: '/nested/nested-item', query: { id: 3 } }}  style={leftMenuStyle.nestedItemLink}>
+          	<ListItem  style={leftMenuStyle.nestedItemLink.nestedItem} leftIcon={<ActionGrade />}  key={3}  primaryText="Item 3" />
+          </Link>
+						]
+						}
+					/>
+				</List>
+				<Link style={leftMenuStyle.link} to="contact"> <MenuItem leftIcon={<CommunicationEmail />}
+																																 onTouchTap={this._handleClose.bind(this)}>Contact </MenuItem></Link>
+				<a style={leftMenuStyle.link} href="https://medium.com/@ozluy" target="_blank"> <MenuItem
+					leftIcon={<ContentInbox />} onTouchTap={this._handleClose.bind(this)}>Blog </MenuItem></a>
 			</Drawer>
 		)
 	}
 
 	_handleClose() {
-		if(!this.props.isLargeWindowMode){
+		if (!this.props.isLargeWindowMode) {
 			this.props.changeOwnerState();
 		}
 	}
