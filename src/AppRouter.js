@@ -10,6 +10,7 @@ import Contact from './pages/Contact.jsx';
 import Projects from './pages/Projects.jsx';
 import Resume from './pages/Resume.jsx';
 
+
 class AppRouter extends React.Component{
 
 	render(){
