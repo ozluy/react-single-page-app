@@ -5,6 +5,7 @@ import HeartIcon from '../icons/HeartIcon.jsx';
 import {grey900, grey600, fullWhite, red900} from 'material-ui/styles/colors'
 
 class Footer extends React.Component {
+
 	render() {
 		const footer = {
 			backgroundColor: grey900,

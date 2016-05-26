@@ -7,31 +7,39 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Subheader from 'material-ui/Subheader';
 import ContentSend from 'material-ui/svg-icons/content/send';
 import {fullWhite} from 'material-ui/styles/colors'
-import {Card, CardActions,CardTitle, CardHeader, CardText} from 'material-ui/Card';
+import {Card, CardActions, CardTitle, CardHeader, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
 class Contact extends BasePage {
+	constructor() {
+		super();
+		this.state = {
+			mobile: window.innerWidth > 767 ? '50%' : '100%'
+		}
+	}
+
 	render() {
+		let _this= this;
 		const styles = {
-			card:{
-				textAlign:'center',
-				marginBottom:'15px',
-				cardHeader:{
-					textAlign:'left'
+			card: {
+				textAlign: 'center',
+				marginBottom: '15px',
+				cardHeader: {
+					textAlign: 'left'
 				}
 			},
-			clearFix:{
-				clear:'both',
+			clearFix: {
+				clear: 'both',
 				width: '100%',
 				display: 'block',
-				padding:'15px',
-				boxSizing:'border-box'
+				padding: '15px',
+				boxSizing: 'border-box'
 			},
 			twinContainer: {
-				padding:'15px',
-				width: '50%',
-				display:'inline-block',
-				boxSizing:'border-box'
+				padding: '15px',
+				width: _this.state.mobile,
+				display: 'inline-block',
+				boxSizing: 'border-box'
 			}
 		};
 
@@ -60,48 +68,48 @@ class Contact extends BasePage {
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 				</CardText>
 			</Card>
-				<Paper>
-					<Subheader> Contact Form</Subheader>
-			<div style={styles.clearFix}>
-				<div style={styles.twinContainer}>
-					<TextField
-						fullWidth={true}
-						hintText="Full Name"
-						errorText=""
-						floatingLabelText="Full Name"
-					/><br />
-					<TextField
-						fullWidth={true}
-						hintText="Phone"
-						errorText=""
-						floatingLabelText="Phone"
-					/><br />
-					<TextField
-						fullWidth={true}
-						hintText="Email"
-						errorText=""
-						floatingLabelText="Email"
-					/><br />
+			<Paper>
+				<Subheader> Contact Form</Subheader>
+				<div style={styles.clearFix}>
+					<div style={styles.twinContainer}>
+						<TextField
+							fullWidth={true}
+							hintText="Full Name"
+							errorText=""
+							floatingLabelText="Full Name"
+						/><br />
+						<TextField
+							fullWidth={true}
+							hintText="Phone"
+							errorText=""
+							floatingLabelText="Phone"
+						/><br />
+						<TextField
+							fullWidth={true}
+							hintText="Email"
+							errorText=""
+							floatingLabelText="Email"
+						/><br />
+					</div>
+					<div style={styles.twinContainer}>
+						<TextField
+							fullWidth={true}
+							hintText="Message"
+							errorText=""
+							floatingLabelText="Message"
+							multiLine={true}
+							rows={5}
+						/><br />
+						<RaisedButton
+							label="send"
+							fullWidth={true}
+							labelPosition="after"
+							primary={true}
+							backgroundColor="#a4c639"
+							icon={<ContentSend color={fullWhite} />}
+						/>
+					</div>
 				</div>
-				<div style={styles.twinContainer}>
-					<TextField
-						fullWidth={true}
-						hintText="Message"
-						errorText=""
-						floatingLabelText="Message"
-						multiLine={true}
-						rows={5}
-					/><br />
-					<RaisedButton
-						label="send"
-						fullWidth={true}
-						labelPosition="after"
-						primary={true}
-						backgroundColor="#a4c639"
-						icon={<ContentSend color={fullWhite} />}
-					/>
-				</div>
-			</div>
 			</Paper>
 		</div>
 	}

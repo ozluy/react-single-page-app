@@ -72,14 +72,12 @@ class App extends React.Component {
 				largeWindowMode: true,
 				isLeftMenuOpen: true
 			});
-			return true;
 		}
 		else {
 			_this.setState({
 				largeWindowMode: false,
 				isLeftMenuOpen: false
 			});
-			return false;
 		}
 	}
 }
