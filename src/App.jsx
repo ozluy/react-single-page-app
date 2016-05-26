@@ -3,6 +3,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Navbar from './components/Navbar/Navbar.jsx';
 import LeftMenu from './components/LeftMenu/LeftMenu.jsx';
+import Footer from './components/Footer/Footer.jsx'
+import {grey900, grey600, fullWhite, red900} from 'material-ui/styles/colors'
 
 /**Material-UI events plugin */
 import injectTapEventPlugin  from 'react-tap-event-plugin';
@@ -22,24 +24,26 @@ class App extends React.Component {
 	};
 
 	render() {
-			const appStyle={
-				appBodyShell:{
-					marginLeft:'256px'
-				},
-				main:{
-					padding:'50px 50px',
-				}
+		const appStyle = {
+			appBodyShell: {
+				marginLeft: '256px'
+			},
+			main: {
+				padding: '50px 50px',
 			}
+		};
 		return (
 			<MuiThemeProvider
 				muiTheme={getMuiTheme()}>
 				<div>
-					<LeftMenu isLargeWindowMode={this.state.largeWindowMode} changeOwnerState={this._toggleLeftMenu.bind(this)} isOpen={this.state.isLeftMenuOpen} />
+					<LeftMenu isLargeWindowMode={this.state.largeWindowMode} changeOwnerState={this._toggleLeftMenu.bind(this)}
+										isOpen={this.state.isLeftMenuOpen}/>
 					<div style={this.state.largeWindowMode ? appStyle.appBodyShell : {}}>
-						<Navbar isLargeWindowMode={this.state.largeWindowMode} toggleLeftMenu={this._toggleLeftMenu.bind(this)} />
-						<main style={appStyle.main} >
-								{this.props.children}
+						<Navbar isLargeWindowMode={this.state.largeWindowMode} toggleLeftMenu={this._toggleLeftMenu.bind(this)}/>
+						<main style={appStyle.main}>
+							{this.props.children}
 						</main>
+						<Footer />
 					</div>
 				</div>
 			</MuiThemeProvider>);
