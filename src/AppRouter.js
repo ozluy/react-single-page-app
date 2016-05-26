@@ -4,12 +4,12 @@
 import React from 'react';
 import {Router, Route, hashHistory, browserHistory, IndexRoute} from 'react-router';
 import App from './App.jsx';
-import Index from './pages/Index.jsx';
-import About from './pages/About.jsx';
-import Contact from './pages/Contact.jsx';
-import Projects from './pages/Projects.jsx';
-import Nested from './pages/Nested.jsx';
-import NestedItem from './pages/NestedItem.jsx';
+import Index from './routes/Index.jsx';
+import About from './routes/About.jsx';
+import Contact from './routes/Contact.jsx';
+import Projects from './routes/Projects.jsx';
+import Nested from './routes/Nested.jsx';
+import NestedItem from './routes/NestedItem.jsx';
 
 
 class AppRouter extends React.Component {
